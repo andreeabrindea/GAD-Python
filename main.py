@@ -1,19 +1,23 @@
+class Fractie:
+    def __init__(self, numitor, numarator):
+        self.__numarator = numarator
+        self.__numitor = numitor
 
-lst1 = [7, 8, 9, 2, 3, 1, 4, 10, 5, 6]
-lst2 = lst1
-lst2.sort()
-print(lst2)
+    def __str__(self):
+        return f"({self.__numarator}/{self.__numitor})"
 
-lst3 = lst1
-lst3.sort(reverse=True)
-print(lst3)
+    def __add__(self, other):
+        fractie1 = other.__numitor * self.__numarator / self.__numitor
+        fractie2 = self.__numitor * other.__numarator / self.__numitor
 
-lst_to_tuple = tuple(lst2)
-x = slice(0, 9, 2)
-print(lst_to_tuple[x])
+        return fractie1 + fractie2
 
-y = slice(1, 9, 2)
-print(lst_to_tuple[y])
+    def __sub__(self, other):
+        fractie1 = other.__numitor * self.__numarator / self.__numitor
+        fractie2 = self.__numitor * other.__numarator / self.__numitor
 
-result = list(filter(lambda x: (x % 3 == 0), lst1))
-print(result)
+        return fractie1 - fractie2
+
+    def inverse(self):
+        return self.__numitor/self.__numarator
+
