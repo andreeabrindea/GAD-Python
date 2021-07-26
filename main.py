@@ -1,19 +1,60 @@
+def your_function(*args, **kwargs):
+    """Să se scrie o funcție care primește un număr nedefinit de parametrii și să se calculeze suma parametrilor care reprezintă
+numere întregi sau reale."""
 
-lst1 = [7, 8, 9, 2, 3, 1, 4, 10, 5, 6]
-lst2 = lst1
-lst2.sort()
-print(lst2)
+    s = 0
+    if type(args) == int or type(args) == float:
+        s = s + args
+    return s
 
-lst3 = lst1
-lst3.sort(reverse=True)
-print(lst3)
 
-lst_to_tuple = tuple(lst2)
-x = slice(0, 9, 2)
-print(lst_to_tuple[x])
+print(your_function(1, 5, -3, "abc", [12, 56, "cad"]))
 
-y = slice(1, 9, 2)
-print(lst_to_tuple[y])
 
-result = list(filter(lambda x: (x % 3 == 0), lst1))
-print(result)
+def sum(n):
+    # suma tuturor numerelor de la [0, n]
+    if n == 0:
+        return 0
+    else:
+        return n + sum(n - 1)
+
+
+print(sum(5))
+
+
+def sum_even(n) -> int:
+    # suma numerelor pare de la [0, n]
+    if n == 0:
+        return 0
+    else:
+        if n % 2 == 0:
+            return n + sum_even(n - 1)
+        else:
+            return 0 + sum_even(n - 1)
+
+
+print(sum_even(6))
+
+
+def sum_odd(n) -> int:
+    # suma numerelor impare de la [0, n]
+    if n == 0:
+        return 0
+    if n % 2 == 0:
+        return sum_odd(n - 1)
+    else:
+        return n + sum_odd(n - 1)
+
+
+print(sum_odd(6))
+
+
+def is_integer():
+    n = input("Enter a number: ")
+    try:
+        print(int(n))
+    except ValueError:
+        print(0)
+
+
+is_integer()
